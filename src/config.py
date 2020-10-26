@@ -1,12 +1,29 @@
 from Vision.web_cam import WebCamera
 from Vision.pi_cam import PiCamera
+from Drive.mock_motor import MockMotor
+from Drive.drive_train import DriveTrain
 
 config = {
-    "camera" : {
-        "type" : "web", # [web, pi]
-        "port" : 1 # Typically [0, 1], only relevant if type == web
+    "camera": {
+        "type": "web",  # [web, pi]
+        "port": 1  # Typically [0, 1], only relevant if type == web
+    },
+    "drive": {
+        "type": "mock",  # [pwm, mock]
+        "log": True,
+        "left": {
+            "pwm_pin": 33,
+            "forward_pin": 11,
+            "reverse_pin": 12
+        },
+        "right": {
+            "pwm_pin": 34,
+            "forward_pin": 13,
+            "reverse_pin": 14
+        },
     }
 }
+
 
 def get_camera():
     """ Provides the camera as defined in the config object """
@@ -18,3 +35,29 @@ def get_camera():
         return PiCamera()
 
     raise ValueError("config.camera.type was not a valid option")
+
+
+def get_drive():
+    """ Provides a drive train as defined in the config object """
+
+    if config["drive"]["type"] == "pwm":
+
+        # This input fails if we aren't on a jetson/pi so only include when configured
+        from Drive.dc_motor import DCMotor
+
+        # Left motor pinout
+        left_config = config["drive"]["left"]
+        left_motor = DCMotor(
+            left_config["pwm_pin"], left_config["forward_pin"], left_config["reverse_pin"])
+
+        # Right motor pinout
+        right_config = config["drive"]["right"]
+        right_motor = DCMotor(
+            right_config["pwm_pin"], right_config["forward_pin"], right_config["reverse_pin"])
+
+        return DriveTrain(left_motor, right_motor, config["drive"]["log"])
+
+    if config["drive"]["type"] == "mock":
+        return DriveTrain(MockMotor(), MockMotor(), config["drive"]["log"])
+
+    raise ValueError("config.drive.type was not a valid option")

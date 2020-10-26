@@ -2,9 +2,10 @@ import math
 
 class DriveTrain():
     """ Represents a drive train, responsible for controlling motors """
-    def __init__(self, left_motor, right_motor):
+    def __init__(self, left_motor, right_motor, log_flag):
         self.left_motor = left_motor
         self.right_motor = right_motor
+        self.log_flag = log_flag
 
     def set_heading(self, speed, angle):
         """
@@ -36,7 +37,10 @@ class DriveTrain():
         right_speed = max(-1, right_speed)
 
         # Print results
-        print("Motor speeds, Left: {:.2f} Right: {:.2f}".format(left_speed, right_speed))
+        if self.log_flag:
+            print("Motor speeds, Left: {:.2f} Right: {:.2f}".format(left_speed, right_speed))
 
-        # Todo: Actually set the motor values
+        # Drive
+        self.left_motor.set_speed(left_speed)
+        self.right_motor.set_speed(right_speed)
         
