@@ -63,3 +63,4 @@ class PiCamera():
             return img
 
         return None
+        
