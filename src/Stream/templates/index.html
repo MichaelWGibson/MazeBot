@@ -1,9 +1,28 @@
 <html>
   <head>
     <title>Maze Bot Video Feed</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <script src="{{url_for('static', filename='joystick.js')}}"></script>
+    <script>
+      function joystick() {
+        var dynamic = nipplejs.create({
+            zone: document.getElementById('rectangle'),
+            mode: 'static',
+            position: {left: '250px', top: '650px'},
+            color: 'blue'
+        });
+
+        dynamic.on("move", function (evt, data){
+          console.log(data.angle.radian)
+          console.log(data.force)
+        })
+
+      }
+  </script>
   </head>
-  <body>
+  <body onload="joystick()">
     <h1>Maze Bot Video Feed</h1>
     <img src="{{ url_for('video_feed') }}">
+    <div id="rectangle"></div>
   </body>
 </html>
