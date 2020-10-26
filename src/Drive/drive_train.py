@@ -21,8 +21,8 @@ class DriveTrain():
         assert -math.pi <= angle <= math.pi, "Argument 'angle' is out of range"
 
         # Use trig to break down the triangle
-        forward_component = math.cos(angle)
-        side_component = math.sin(angle)
+        forward_component = math.cos(angle) * speed
+        side_component = math.sin(angle) * speed
 
         # Put it back together in terms of motor speed
         # If the side component is right, spin left wheel faster
