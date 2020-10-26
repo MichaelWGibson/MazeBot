@@ -12,7 +12,7 @@
       function throttleSend(limit, data) {
         return function () {
           if (!wait) {
-            send(data.distance, data.angle.radian);
+            send(data.force, data.angle.radian);
             wait = true;
             setTimeout(function () {
               wait = false;
