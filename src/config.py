@@ -42,7 +42,7 @@ def get_drive():
 
     if config["drive"]["type"] == "pwm":
 
-        # This input fails if we aren't on a jetson/pi so only include when configured
+        # This import fails if we aren't on a jetson/pi so only include when configured
         from Drive.dc_motor import DCMotor
 
         # Left motor pinout
