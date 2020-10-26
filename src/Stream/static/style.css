@@ -1,7 +1,7 @@
 #rectangle {
     touch-action: none;
     width: 450px;
-    height: 200px;
+    height: 450px;
     background: lightgray;
     margin: 10px;
 }
