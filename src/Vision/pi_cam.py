@@ -4,7 +4,7 @@ class PiCamera():
     """
     Represents a rasberry pi v2 camera module
     """
-    def __init__(self,     
+    def __init__(self,
         capture_width=1280,
         capture_height=720,
         display_width=1280,
@@ -63,4 +63,3 @@ class PiCamera():
             return img
 
         return None
-        

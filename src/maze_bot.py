@@ -1,9 +1,9 @@
-from Vision.web_cam import WebCamera
+import config
 from Vision.video_feed import VideoFeed
 import Stream.stream as stream
 
 try:
-    cam = WebCamera(1)
+    cam = config.get_camera()
     feed = VideoFeed(cam)
     stream.start(feed.get_generator)
 except KeyboardInterrupt:
