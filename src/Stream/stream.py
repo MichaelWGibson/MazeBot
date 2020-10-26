@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 import cv2
 import time
 import threading
@@ -19,6 +19,13 @@ def index():
 def video_feed():
     """ Serves the video feed """
     return Response(source(), mimetype="multipart/x-mixed-replace; boundary=frame")
+
+@app.route("/heading", methods=['POST'])
+def set_heading():
+    speed = request.form.get('speed',  type=float)
+    angle = request.form.get('angle',  type=float)
+    print("Setting heading, Speed: {:.2f} Angle: {:.2f}".format(speed, angle))
+    return("done")
 
 def start(image_source):
     """
