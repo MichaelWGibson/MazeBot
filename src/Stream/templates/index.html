@@ -36,7 +36,7 @@
         });
 
         dynamic.on("move", function (evt, data) {
-          throttleSend(200, data)();
+          throttleSend(100, data)();
         });
 
         dynamic.on("end", function (evt, data) {

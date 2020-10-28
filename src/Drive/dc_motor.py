@@ -47,7 +47,7 @@ class DCMotor():
         self._speed = speed
 
         # Update pins
-        self._pwm.ChangeDutyCycle(abs(speed))
+        self._pwm.start(abs(speed))
         GPIO.output(self._forward_pin, GPIO.HIGH if speed > 0 else GPIO.LOW)
         GPIO.output(self._backward_pin, GPIO.LOW if speed > 0 else GPIO.HIGH)
 

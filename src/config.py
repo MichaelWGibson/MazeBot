@@ -5,21 +5,21 @@ from Drive.drive_train import DriveTrain
 
 config = {
     "camera": {
-        "type": "web",  # [web, pi]
+        "type": "pi",  # [web, pi]
         "port": 1  # Typically [0, 1], only relevant if type == web
     },
     "drive": {
-        "type": "mock",  # [pwm, mock]
+        "type": "pwm",  # [pwm, mock]
         "log": True,
         "left": {
             "pwm_pin": 33,
-            "forward_pin": 11,
-            "reverse_pin": 12
+            "forward_pin": 12,
+            "reverse_pin": 11
         },
         "right": {
-            "pwm_pin": 34,
-            "forward_pin": 13,
-            "reverse_pin": 14
+            "pwm_pin": 32,
+            "forward_pin": 16,
+            "reverse_pin": 15
         },
     }
 }

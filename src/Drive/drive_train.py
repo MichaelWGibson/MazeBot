@@ -22,7 +22,9 @@ class DriveTrain():
 
         # Use trig to break down the triangle
         forward_component = math.cos(angle) * speed
-        side_component = math.sin(angle) * speed
+
+        # Make turning less touchy
+        side_component = (math.sin(angle) * speed) / 3
 
         # Put it back together in terms of motor speed
         # If the side component is right, spin left wheel faster
@@ -41,6 +43,6 @@ class DriveTrain():
             print("Motor speeds, Left: {:.2f} Right: {:.2f}".format(left_speed, right_speed))
 
         # Drive
-        self.left_motor.set_speed(left_speed)
-        self.right_motor.set_speed(right_speed)
+        self.left_motor.set_speed(left_speed * 100)
+        self.right_motor.set_speed(right_speed * 100)
         

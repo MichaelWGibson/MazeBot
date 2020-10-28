@@ -29,7 +29,7 @@ def set_heading():
     angle = request.form.get('angle',  type=float)
 
     # Cap speed at a force of 3, scale range [0, 1]
-    speed = min(speed, 3) / 3
+    speed = min(speed, 8) / 8
 
     # Rotate one quarter turn
     angle = (angle + math.pi/2) % (math.pi * 2)
