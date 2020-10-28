@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: Launch Maze Bot",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "src/maze_bot.py",
             "console": "integratedTerminal"
         }
     ]

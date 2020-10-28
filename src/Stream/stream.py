@@ -8,7 +8,6 @@ app = Flask(__name__)
 SOURCE = None
 DRIVE = None
 
-
 @app.route('/')
 def index():
     """ Default route """
