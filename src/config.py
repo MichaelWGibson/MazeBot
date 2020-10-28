@@ -10,7 +10,7 @@ config = {
     },
     "drive": {
         "type": "pwm",  # [pwm, mock]
-        "log": True,
+        "log": False,
         "left": {
             "pwm_pin": 33,
             "forward_pin": 12,

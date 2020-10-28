@@ -17,7 +17,7 @@ class DriveTrain():
         """
 
         # Check inputs
-        assert 0 <= speed <= 1, "Argument 'speed' is out of range"
+        assert 0 <= speed <= 1, "Argument 'speed' is out of range: {}".format(speed)
         assert -math.pi <= angle <= math.pi, "Argument 'angle' is out of range"
 
         # Use trig to break down the triangle

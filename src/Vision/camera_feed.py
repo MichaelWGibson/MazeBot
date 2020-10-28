@@ -40,7 +40,7 @@ class CameraFeed(VideoFeed):
             if self._frame is not None:
                 self._notify(self._frame)
             else:
-                sleep(.2)
+                sleep(.02)
 
             if self._shutdown_flag:
                 break
